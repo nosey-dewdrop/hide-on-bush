@@ -1,0 +1,52 @@
+'use client';
+
+import { useEffect, useState } from 'react';
+import { Event, EventTag, User } from '@/lib/types';
+import { db } from '@/lib/db';
+import { seedIfEmpty } from '@/lib/seed';
+import Header from '@/components/layout/Header';
+import TagBar from '@/components/layout/TagBar';
+import CorkSurface from '@/components/board/CorkSurface';
+import BoardGrid from '@/components/board/BoardGrid';
+
+export default function Home() {
+  const [events, setEvents] = useState<Event[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [activeTag, setActiveTag] = useState<EventTag | 'all'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    seedIfEmpty();
+    setEvents(db.getEvents());
+    setUsers(db.getUsers());
+    setReady(true);
+  }, []);
+
+  const filtered = events.filter((e) => {
+    const matchesTag = activeTag === 'all' || e.tags.includes(activeTag as EventTag);
+    const q = searchQuery.toLowerCase().trim();
+    const matchesSearch =
+      !q ||
+      e.title.toLowerCase().includes(q) ||
+      e.tags.some((t) => t.includes(q));
+    return matchesTag && matchesSearch;
+  });
+
+  if (!ready) return null;
+
+  return (
+    <>
+      <Header
+        onSearch={(q) => setSearchQuery(q)}
+      />
+      <TagBar
+        activeTag={activeTag as EventTag}
+        onTagSelect={(tag) => setActiveTag(tag)}
+      />
+      <CorkSurface>
+        <BoardGrid events={filtered} users={users} />
+      </CorkSurface>
+    </>
+  );
+}
