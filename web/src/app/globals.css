@@ -1,0 +1,205 @@
+@import "tailwindcss";
+
+:root {
+  --font: 'IBM Plex Mono', monospace;
+  --baby-bg: #f0f8ff;
+  --sky: #87ceeb;
+  --dark: #1a3a4a;
+  --muted: #4a7a8a;
+  --light: #6a9aaa;
+  --border: #c4dfe8;
+  --cream: #f7fbfe;
+  --baby-light: #ddf0fa;
+  --pin-red: #d94040;
+  --pin-blue: #4078d9;
+  --pin-green: #3ba55d;
+  --pin-yellow: #e8a825;
+  --cork-light: #c4956a;
+  --cork-mid: #b8845c;
+  --cork-dark: #a67348;
+}
+
+@theme inline {
+  --color-baby-bg: var(--baby-bg);
+  --color-sky: var(--sky);
+  --color-dark: var(--dark);
+  --color-muted: var(--muted);
+  --color-light: var(--light);
+  --color-border: var(--border);
+  --color-cream: var(--cream);
+  --color-baby-light: var(--baby-light);
+  --color-pin-red: var(--pin-red);
+  --color-pin-blue: var(--pin-blue);
+  --color-pin-green: var(--pin-green);
+  --color-pin-yellow: var(--pin-yellow);
+  --color-cork-light: var(--cork-light);
+  --color-cork-mid: var(--cork-mid);
+  --color-cork-dark: var(--cork-dark);
+}
+
+::selection {
+  background: var(--sky);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+/* Cork board surface */
+.cork-surface {
+  max-width: 1000px;
+  margin: 0 auto;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(210,170,120,0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(210,170,120,0.1) 0%, transparent 50%),
+    linear-gradient(135deg, var(--cork-dark) 0%, var(--cork-mid) 30%, var(--cork-light) 50%, var(--cork-mid) 70%, var(--cork-dark) 100%);
+  border-radius: 8px;
+  padding: 28px;
+  position: relative;
+  min-height: 400px;
+  box-shadow: inset 0 2px 8px rgba(0,0,0,0.2), 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.cork-surface::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 8px;
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(0,0,0,0.04) 1px, transparent 1px),
+    radial-gradient(circle at 50% 40%, rgba(255,255,255,0.05) 1px, transparent 1px),
+    radial-gradient(circle at 90% 60%, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 80px 80px, 60px 60px, 90px 90px;
+  pointer-events: none;
+}
+
+.cork-surface::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 10px;
+  border: 3px solid #5c3a1e;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Pin animation */
+@keyframes pinDown {
+  0% { opacity: 0; transform: rotate(var(--rot, 0deg)) scale(0.4) translateY(-100px); }
+  50% { opacity: 1; transform: rotate(var(--rot, 0deg)) scale(1.05) translateY(3px); }
+  75% { transform: rotate(var(--rot, 0deg)) scale(0.98) translateY(-1px); }
+  100% { opacity: 1; transform: rotate(var(--rot, 0deg)) scale(1) translateY(0); }
+}
+
+@keyframes badgePulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+/* Poster color variants */
+.poster-color-mint .poster-header { background: #e8f5e9; }
+.poster-color-lavender .poster-header { background: #ede7f6; }
+.poster-color-peach .poster-header { background: #fce4ec; }
+.poster-color-sky .poster-header { background: #e3f2fd; }
+.poster-color-butter .poster-header { background: #fff8e1; }
+.poster-color-coral .poster-header { background: #fbe9e7; }
+.poster-color-sage .poster-header { background: #e8f5e9; }
+.poster-color-rose .poster-header { background: #fce4ec; }
+
+/* Poster rotation presets */
+.poster:nth-child(1) { --rot: -2deg; }
+.poster:nth-child(2) { --rot: 1.5deg; }
+.poster:nth-child(3) { --rot: -1deg; }
+.poster:nth-child(4) { --rot: 2.5deg; }
+.poster:nth-child(5) { --rot: -0.5deg; }
+.poster:nth-child(6) { --rot: 1.8deg; }
+.poster:nth-child(7) { --rot: -1.5deg; }
+.poster:nth-child(8) { --rot: 0.8deg; }
+
+/* Poster pinned animation class */
+.poster.pinned {
+  animation: pinDown 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* Pin element */
+.pin::before {
+  content: '';
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  background: var(--pin-color, var(--pin-red));
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 -2px 3px rgba(0,0,0,0.2), inset 0 2px 3px rgba(255,255,255,0.3);
+}
+
+/* Tape decorations */
+.tape {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%) rotate(-2deg);
+  width: 44px;
+  height: 16px;
+  background: rgba(255,235,150,0.7);
+  z-index: 5;
+}
+
+.tape-alt {
+  transform: translateX(-50%) rotate(3deg);
+  background: rgba(200,230,255,0.65);
+}
+
+/* Just pinned badge */
+.just-pinned-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: var(--sky);
+  color: #fff;
+  font-size: 8px;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 3px;
+  z-index: 6;
+  animation: badgePulse 2s ease infinite;
+}
+
+/* Toggle switch */
+.toggle {
+  width: 36px;
+  height: 20px;
+  border-radius: 10px;
+  background: var(--border);
+  position: relative;
+  cursor: pointer;
+  transition: background 0.2s;
+  border: none;
+  flex-shrink: 0;
+}
+
+.toggle::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  transition: transform 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+}
+
+.toggle.on {
+  background: var(--sky);
+}
+
+.toggle.on::after {
+  transform: translateX(16px);
+}
