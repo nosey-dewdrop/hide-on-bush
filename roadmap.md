@@ -6,8 +6,8 @@
 - [x] redesign as platform mock (sidebar, search, #tags, calendar, user profiles)
 - [ ] mock review and iteration
 - [ ] web app scaffold (Next.js 15 + Tailwind v4 + TypeScript)
-- [ ] port data models from Java (Event, User, Comment, Follow)
-- [ ] localStorage data layer
+- [x] port data models from Java (Event, User, Comment, Follow)
+- [x] localStorage data layer
 
 ## Phase 2: Core Features
 - [ ] user authentication (sign up, login)
