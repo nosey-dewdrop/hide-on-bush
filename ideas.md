@@ -14,3 +14,4 @@
 - calendar sync (export to google calendar / apple calendar)
 - trending tags section in sidebar
 - positioning: "strava for campus events" - social, gamified, follow-based event discovery
+- auto generate poster if user doesn't upload one (emoji + color + title like current cards)
