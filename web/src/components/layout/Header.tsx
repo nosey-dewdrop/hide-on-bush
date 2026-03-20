@@ -27,7 +27,7 @@ export default function Header({
         <em className="not-italic text-[var(--sky)]">league</em> of bilkent
       </span>
 
-      <SearchBox onChange={(e) => onSearch?.(e.currentTarget.value)} />
+      <SearchBox onInput={(e) => onSearch?.((e.target as HTMLInputElement).value)} />
 
       <div className="flex items-center gap-[10px]">
         <button

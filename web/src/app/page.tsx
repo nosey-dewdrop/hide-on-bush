@@ -20,8 +20,11 @@ export default function Home() {
 
   useEffect(() => {
     seedIfEmpty();
-    setEvents(db.getEvents());
-    setUsers(db.getUsers());
+    const loadedEvents = db.getEvents();
+    const loadedUsers = db.getUsers();
+    console.log('[LOB] events:', loadedEvents.length, 'users:', loadedUsers.length);
+    setEvents(loadedEvents);
+    setUsers(loadedUsers);
     setReady(true);
   }, []);
 
