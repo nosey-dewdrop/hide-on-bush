@@ -304,7 +304,7 @@
     }
 
     /* ── Calendar ── */
-    .calendar-view { margin-top: 24px; display: none; }
+    .calendar-view { margin-top: 24px; display: none; max-width: 1000px; margin-left: auto; margin-right: auto; }
     .calendar-view.active { display: block; }
 
     .cal-header {
@@ -353,6 +353,236 @@
     .cal-event.cat-food { background: #fff8e1; color: #f57f17; }
     .cal-event.cat-tech { background: #e8f5e9; color: #2e7d32; }
 
+    /* ── Views (shared) ── */
+    .view { display: none; max-width: 600px; margin: 0 auto; }
+    .view.active { display: block; }
+
+    .view-title {
+      font-size: 14px; font-weight: 500; margin-bottom: 20px;
+      padding-bottom: 10px; border-bottom: 1px solid var(--border);
+    }
+
+    .back-btn {
+      font-family: var(--font); font-size: 10px; font-weight: 300;
+      padding: 4px 10px; border: 1px solid var(--border); border-radius: 3px;
+      background: none; color: var(--muted); cursor: pointer;
+      margin-bottom: 16px; transition: all 0.2s;
+    }
+
+    .back-btn:hover { border-color: var(--sky); color: var(--dark); }
+
+    /* ── Profile ── */
+    .profile-header {
+      display: flex; align-items: center; gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .profile-avatar {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--sky); display: flex; align-items: center;
+      justify-content: center; font-size: 22px; color: #fff; font-weight: 500;
+    }
+
+    .profile-info { flex: 1; }
+
+    .profile-name {
+      font-size: 16px; font-weight: 500; margin-bottom: 2px;
+    }
+
+    .profile-handle {
+      font-size: 11px; color: var(--muted); font-weight: 300;
+    }
+
+    .profile-bio {
+      font-size: 11px; color: var(--dark); font-weight: 300;
+      margin-top: 6px; line-height: 1.5;
+    }
+
+    .profile-stats {
+      display: flex; gap: 20px; margin-bottom: 24px;
+      padding: 14px 0; border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stat { text-align: center; }
+    .stat-num { font-size: 16px; font-weight: 500; display: block; }
+    .stat-label { font-size: 9px; color: var(--muted); font-weight: 300; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    .profile-xp {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 4px; padding: 12px 16px; margin-bottom: 20px;
+    }
+
+    .xp-label { font-size: 10px; color: var(--muted); font-weight: 300; margin-bottom: 6px; }
+
+    .xp-bar {
+      height: 6px; background: var(--border); border-radius: 3px; overflow: hidden;
+    }
+
+    .xp-fill {
+      height: 100%; background: var(--sky); border-radius: 3px;
+      transition: width 0.6s ease;
+    }
+
+    .xp-text { font-size: 10px; color: var(--dark); font-weight: 400; margin-top: 4px; }
+
+    .profile-section-title {
+      font-size: 10px; font-weight: 500; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .profile-events {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .profile-event-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 4px; padding: 10px 12px; cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .profile-event-card:hover { box-shadow: 0 2px 8px var(--glow, rgba(135,206,235,0.12)); }
+    .profile-event-card .pe-emoji { font-size: 16px; margin-bottom: 4px; display: block; }
+    .profile-event-card .pe-title { font-size: 11px; font-weight: 500; }
+    .profile-event-card .pe-date { font-size: 9px; color: var(--muted); font-weight: 300; margin-top: 2px; }
+
+    .profile-actions {
+      display: flex; gap: 8px;
+    }
+
+    .profile-actions button {
+      font-family: var(--font); font-size: 10px; font-weight: 400;
+      padding: 6px 16px; border-radius: 3px; cursor: pointer; transition: all 0.2s;
+    }
+
+    .btn-follow {
+      background: var(--sky); border: none; color: #fff;
+    }
+
+    .btn-follow:hover { background: #6dbfdf; }
+
+    .btn-secondary {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+    }
+
+    .btn-secondary:hover { border-color: var(--sky); color: var(--dark); }
+
+    /* ── Create Event ── */
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      font-size: 10px; font-weight: 400; color: var(--dark);
+      margin-bottom: 4px; display: block;
+    }
+
+    .form-input, .form-select, .form-textarea {
+      font-family: var(--font); font-size: 11px; font-weight: 300;
+      padding: 8px 12px; border: 1px solid var(--border); border-radius: 4px;
+      background: var(--cream); color: var(--dark); outline: none;
+      width: 100%; transition: border-color 0.2s;
+    }
+
+    .form-input:focus, .form-select:focus, .form-textarea:focus {
+      border-color: var(--sky);
+    }
+
+    .form-textarea { resize: vertical; min-height: 80px; }
+
+    .form-row { display: flex; gap: 12px; }
+    .form-row .form-group { flex: 1; }
+
+    .emoji-picker {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+
+    .emoji-opt {
+      font-size: 20px; padding: 4px; cursor: pointer;
+      border-radius: 4px; border: 2px solid transparent;
+      transition: all 0.15s; background: none;
+    }
+
+    .emoji-opt:hover { background: var(--baby-light); }
+    .emoji-opt.selected { border-color: var(--sky); background: var(--baby-light); }
+
+    .form-tags {
+      display: flex; gap: 6px; flex-wrap: wrap;
+    }
+
+    .form-tag {
+      font-family: var(--font); font-size: 10px; font-weight: 300;
+      padding: 3px 8px; border-radius: 3px;
+      border: 1px solid var(--border); background: none;
+      color: var(--muted); cursor: pointer; transition: all 0.15s;
+    }
+
+    .form-tag:hover { border-color: var(--sky); color: var(--dark); }
+    .form-tag.selected { background: var(--baby-light); border-color: var(--sky); color: var(--dark); font-weight: 400; }
+
+    .form-submit {
+      font-family: var(--font); font-size: 11px; font-weight: 400;
+      padding: 8px 24px; border-radius: 4px; border: none;
+      background: var(--sky); color: #fff; cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .form-submit:hover { background: #6dbfdf; }
+
+    /* ── Settings ── */
+    .settings-section {
+      margin-bottom: 24px;
+    }
+
+    .settings-section-title {
+      font-size: 10px; font-weight: 500; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+
+    .setting-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; border-bottom: 1px solid var(--border);
+    }
+
+    .setting-row:last-child { border-bottom: none; }
+
+    .setting-label { font-size: 11px; font-weight: 400; }
+    .setting-desc { font-size: 9px; color: var(--muted); font-weight: 300; margin-top: 2px; }
+
+    .toggle {
+      width: 36px; height: 20px; border-radius: 10px;
+      background: var(--border); position: relative;
+      cursor: pointer; transition: background 0.2s;
+      border: none;
+    }
+
+    .toggle::after {
+      content: '';
+      position: absolute; top: 2px; left: 2px;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: #fff; transition: transform 0.2s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    .toggle.on { background: var(--sky); }
+    .toggle.on::after { transform: translateX(16px); }
+
+    .setting-value {
+      font-size: 11px; color: var(--muted); font-weight: 300;
+    }
+
+    .btn-danger {
+      font-family: var(--font); font-size: 10px; font-weight: 400;
+      padding: 6px 14px; border-radius: 3px;
+      border: 1px solid #e57373; background: none;
+      color: #e57373; cursor: pointer; transition: all 0.2s;
+    }
+
+    .btn-danger:hover { background: #e57373; color: #fff; }
+
     /* ── Animations ── */
     @keyframes pinDown {
       0% { opacity: 0; transform: rotate(var(--rot, 0deg)) scale(0.4) translateY(-100px); }
@@ -386,8 +616,8 @@
     <input type="text" class="search-box" placeholder="search..." oninput="searchEvents(this.value)">
     <div class="header-right">
       <button class="icon-btn" onclick="toggleCalendar(this)">calendar</button>
-      <button class="btn-pin">+ pin</button>
-      <div class="avatar">D</div>
+      <button class="btn-pin" onclick="showView('createView')">+ pin</button>
+      <div class="avatar" onclick="showView('profileView')">D</div>
     </div>
   </div>
 
@@ -609,19 +839,288 @@
     </div>
   </div>
 
+  <!-- Profile View -->
+  <div class="view" id="profileView">
+    <button class="back-btn" onclick="showView('boardView')">&larr; back to board</button>
+    <div class="profile-header">
+      <div class="profile-avatar">D</div>
+      <div class="profile-info">
+        <div class="profile-name">damla</div>
+        <div class="profile-handle">@damla</div>
+        <div class="profile-bio">cs student at bilkent. last ai bender. building things.</div>
+      </div>
+    </div>
+    <div class="profile-actions" style="margin-bottom: 20px;">
+      <button class="profile-actions btn-secondary" onclick="showView('settingsView')">settings</button>
+    </div>
+    <div class="profile-stats">
+      <div class="stat"><span class="stat-num">6</span><span class="stat-label">pinned</span></div>
+      <div class="stat"><span class="stat-num">14</span><span class="stat-label">joined</span></div>
+      <div class="stat"><span class="stat-num">23</span><span class="stat-label">followers</span></div>
+      <div class="stat"><span class="stat-num">18</span><span class="stat-label">following</span></div>
+    </div>
+    <div class="profile-xp">
+      <div class="xp-label">level 4</div>
+      <div class="xp-bar"><div class="xp-fill" style="width: 68%"></div></div>
+      <div class="xp-text">420 / 620 xp</div>
+    </div>
+    <div class="profile-section-title">pinned events</div>
+    <div class="profile-events">
+      <div class="profile-event-card">
+        <span class="pe-emoji">📸</span>
+        <div class="pe-title">Photography Walk</div>
+        <div class="pe-date">mar 30 · 10:00</div>
+      </div>
+      <div class="profile-event-card">
+        <span class="pe-emoji">💻</span>
+        <div class="pe-title">Spring Hackathon</div>
+        <div class="pe-date">apr 5-6 · 09:00</div>
+      </div>
+      <div class="profile-event-card">
+        <span class="pe-emoji">🎷</span>
+        <div class="pe-title">Jazz Night</div>
+        <div class="pe-date">mar 24 · 20:00</div>
+      </div>
+      <div class="profile-event-card">
+        <span class="pe-emoji">🧘</span>
+        <div class="pe-title">Morning Yoga</div>
+        <div class="pe-date">every tue & thu</div>
+      </div>
+    </div>
+    <div class="profile-section-title">joined events</div>
+    <div class="profile-events">
+      <div class="profile-event-card">
+        <span class="pe-emoji">⚽</span>
+        <div class="pe-title">Football Tournament</div>
+        <div class="pe-date">mar 28 · 16:00</div>
+      </div>
+      <div class="profile-event-card">
+        <span class="pe-emoji">📚</span>
+        <div class="pe-title">Algorithms Study</div>
+        <div class="pe-date">mar 22 · 14:00</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Create Event View -->
+  <div class="view" id="createView">
+    <button class="back-btn" onclick="showView('boardView')">&larr; back to board</button>
+    <div class="view-title">pin a new event</div>
+    <div class="form-group">
+      <label class="form-label">emoji</label>
+      <div class="emoji-picker">
+        <button class="emoji-opt" onclick="selectEmoji(this)">📚</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">🎷</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">⚽</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">📸</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">🗣️</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">🍳</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">💻</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">🧘</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">🎨</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">🎮</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">🎤</button>
+        <button class="emoji-opt" onclick="selectEmoji(this)">🏃</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">title</label>
+      <input class="form-input" type="text" placeholder="event name...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">description</label>
+      <textarea class="form-textarea" placeholder="what's it about..."></textarea>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">date</label>
+        <input class="form-input" type="date">
+      </div>
+      <div class="form-group">
+        <label class="form-label">time</label>
+        <input class="form-input" type="time">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">location</label>
+      <input class="form-input" type="text" placeholder="where...">
+    </div>
+    <div class="form-group">
+      <label class="form-label">tags</label>
+      <div class="form-tags">
+        <button class="form-tag" onclick="toggleFormTag(this)">#music</button>
+        <button class="form-tag" onclick="toggleFormTag(this)">#sports</button>
+        <button class="form-tag" onclick="toggleFormTag(this)">#study</button>
+        <button class="form-tag" onclick="toggleFormTag(this)">#arts</button>
+        <button class="form-tag" onclick="toggleFormTag(this)">#food</button>
+        <button class="form-tag" onclick="toggleFormTag(this)">#tech</button>
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">poster color</label>
+      <div class="emoji-picker">
+        <button class="emoji-opt selected" onclick="selectColor(this)" style="background:#e3f2fd;width:28px;height:28px;font-size:0;border-radius:50%"></button>
+        <button class="emoji-opt" onclick="selectColor(this)" style="background:#ede7f6;width:28px;height:28px;font-size:0;border-radius:50%"></button>
+        <button class="emoji-opt" onclick="selectColor(this)" style="background:#fce4ec;width:28px;height:28px;font-size:0;border-radius:50%"></button>
+        <button class="emoji-opt" onclick="selectColor(this)" style="background:#e8f5e9;width:28px;height:28px;font-size:0;border-radius:50%"></button>
+        <button class="emoji-opt" onclick="selectColor(this)" style="background:#fff8e1;width:28px;height:28px;font-size:0;border-radius:50%"></button>
+        <button class="emoji-opt" onclick="selectColor(this)" style="background:#fbe9e7;width:28px;height:28px;font-size:0;border-radius:50%"></button>
+      </div>
+    </div>
+    <button class="form-submit" style="margin-top: 8px">pin to board</button>
+  </div>
+
+  <!-- Event Detail View -->
+  <div class="view" id="eventDetailView">
+    <button class="back-btn" onclick="showView('boardView')">&larr; back to board</button>
+    <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:20px;">
+      <div style="font-size:36px;">📸</div>
+      <div style="flex:1;">
+        <div style="font-size:16px;font-weight:500;margin-bottom:4px;" id="detailTitle">Photography Walk</div>
+        <div style="font-size:11px;color:var(--muted);font-weight:300;">
+          <span id="detailTags">#arts #photo</span>
+        </div>
+      </div>
+      <button class="going-btn" style="font-size:11px;padding:6px 14px;">+ join</button>
+    </div>
+    <div style="display:flex;gap:20px;margin-bottom:20px;padding:14px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+      <div style="font-size:11px;font-weight:300;display:flex;align-items:center;gap:5px;"><span style="opacity:0.6">📅</span> <span id="detailDate">mar 30 · 10:00</span></div>
+      <div style="font-size:11px;font-weight:300;display:flex;align-items:center;gap:5px;"><span style="opacity:0.6">📍</span> <span id="detailLocation">Main Gate</span></div>
+      <div style="font-size:11px;font-weight:300;display:flex;align-items:center;gap:5px;"><span style="opacity:0.6">👥</span> <span id="detailGoing">12 going</span></div>
+    </div>
+    <div style="font-size:11px;font-weight:300;line-height:1.6;color:var(--dark);margin-bottom:24px;">
+      meet at the main gate and we'll walk around campus capturing spring vibes. bring any camera, phone is fine too. we'll share a google photos album after.
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:24px;">
+      <div class="avatar" style="width:20px;height:20px;font-size:9px;">D</div>
+      <span style="font-size:10px;font-weight:400;">damla</span>
+      <span style="font-size:9px;color:var(--muted);font-weight:300;">pinned 2h ago</span>
+    </div>
+    <div class="profile-section-title">thread</div>
+    <div style="margin-bottom:12px;">
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <div class="avatar" style="width:20px;height:20px;font-size:9px;flex-shrink:0;">E</div>
+        <div>
+          <div style="font-size:10px;font-weight:400;">ece <span style="font-weight:300;color:var(--muted);">· 1h ago</span></div>
+          <div style="font-size:11px;font-weight:300;line-height:1.5;margin-top:3px;">can we also stop by the library garden? the light there is amazing in the morning</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <div class="avatar" style="width:20px;height:20px;font-size:9px;flex-shrink:0;">K</div>
+        <div>
+          <div style="font-size:10px;font-weight:400;">kerem <span style="font-weight:300;color:var(--muted);">· 45m ago</span></div>
+          <div style="font-size:11px;font-weight:300;line-height:1.5;margin-top:3px;">i'll bring my film camera too. should i bring extra rolls for anyone?</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;margin-bottom:12px;">
+        <div class="avatar" style="width:20px;height:20px;font-size:9px;flex-shrink:0;">D</div>
+        <div>
+          <div style="font-size:10px;font-weight:400;">damla <span style="font-weight:300;color:var(--muted);">· 20m ago</span></div>
+          <div style="font-size:11px;font-weight:300;line-height:1.5;margin-top:3px;">yes library garden is on the route! and kerem yes please bring extra film 🎞️</div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <input class="form-input" type="text" placeholder="write a reply..." style="flex:1;">
+      <button class="btn-pin" style="font-size:10px;padding:8px 14px;">send</button>
+    </div>
+  </div>
+
+  <!-- Settings View -->
+  <div class="view" id="settingsView">
+    <button class="back-btn" onclick="showView('profileView')">&larr; back to profile</button>
+    <div class="view-title">settings</div>
+    <div class="settings-section">
+      <div class="settings-section-title">account</div>
+      <div class="setting-row">
+        <div><div class="setting-label">display name</div><div class="setting-desc">how others see you</div></div>
+        <div class="setting-value">damla</div>
+      </div>
+      <div class="setting-row">
+        <div><div class="setting-label">username</div><div class="setting-desc">your unique handle</div></div>
+        <div class="setting-value">@damla</div>
+      </div>
+      <div class="setting-row">
+        <div><div class="setting-label">email</div></div>
+        <div class="setting-value">damla@bilkent.edu.tr</div>
+      </div>
+    </div>
+    <div class="settings-section">
+      <div class="settings-section-title">notifications</div>
+      <div class="setting-row">
+        <div><div class="setting-label">new events from followed</div><div class="setting-desc">when someone you follow pins an event</div></div>
+        <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+      </div>
+      <div class="setting-row">
+        <div><div class="setting-label">event reminders</div><div class="setting-desc">1 hour before events you joined</div></div>
+        <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+      </div>
+      <div class="setting-row">
+        <div><div class="setting-label">thread replies</div><div class="setting-desc">when someone replies to your thread</div></div>
+        <button class="toggle on" onclick="this.classList.toggle('on')"></button>
+      </div>
+      <div class="setting-row">
+        <div><div class="setting-label">new followers</div></div>
+        <button class="toggle" onclick="this.classList.toggle('on')"></button>
+      </div>
+    </div>
+    <div class="settings-section">
+      <div class="settings-section-title">appearance</div>
+      <div class="setting-row">
+        <div><div class="setting-label">dark mode</div></div>
+        <button class="toggle" onclick="this.classList.toggle('on')"></button>
+      </div>
+    </div>
+    <div class="settings-section">
+      <div class="settings-section-title">danger zone</div>
+      <div class="setting-row">
+        <div><div class="setting-label">log out</div></div>
+        <button class="btn-danger">log out</button>
+      </div>
+      <div class="setting-row">
+        <div><div class="setting-label">delete account</div><div class="setting-desc">this cannot be undone</div></div>
+        <button class="btn-danger">delete</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     // Pin one by one
     document.querySelectorAll('.poster').forEach((p, i) => {
       setTimeout(() => p.classList.add('pinned'), i * 350);
     });
 
+    // View switching
+    const allViews = ['boardView', 'calendarView', 'profileView', 'createView', 'eventDetailView', 'settingsView'];
+    const boardParts = ['boardView', 'calendarView']; // these share tags bar
+
+    function showView(id) {
+      // hide all views
+      allViews.forEach(v => {
+        const el = document.getElementById(v);
+        if (el) { el.style.display = 'none'; el.classList.remove('active'); }
+      });
+      // show target
+      const target = document.getElementById(id);
+      if (target) {
+        if (target.classList.contains('view')) {
+          target.style.display = 'block';
+          target.classList.add('active');
+        } else {
+          target.style.display = '';
+        }
+      }
+      // toggle tags bar visibility
+      document.querySelector('.tags').style.display = boardParts.includes(id) ? '' : 'none';
+      // calendar btn state
+      document.querySelector('.icon-btn').classList.toggle('active', id === 'calendarView');
+    }
+
     // Calendar toggle
     function toggleCalendar(btn) {
       const cal = document.getElementById('calendarView');
-      const board = document.getElementById('boardView');
-      const showing = cal.classList.toggle('active');
-      board.style.display = showing ? 'none' : '';
-      btn.classList.toggle('active', showing);
+      const isShowing = cal.style.display !== 'none' && cal.classList.contains('active');
+      showView(isShowing ? 'boardView' : 'calendarView');
     }
 
     // Tag filter
@@ -640,6 +1139,28 @@
         const t = p.dataset.title.toLowerCase();
         p.style.display = (!q || t.includes(q) || p.dataset.category.includes(q)) ? '' : 'none';
       });
+    }
+
+    // Poster click -> event detail
+    document.querySelectorAll('.poster-card').forEach(card => {
+      card.addEventListener('click', () => {
+        showView('eventDetailView');
+      });
+    });
+
+    // Create event form helpers
+    function selectEmoji(el) {
+      document.querySelectorAll('.emoji-picker .emoji-opt').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function selectColor(el) {
+      el.closest('.emoji-picker').querySelectorAll('.emoji-opt').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+    }
+
+    function toggleFormTag(el) {
+      el.classList.toggle('selected');
     }
   </script>
 </body>
