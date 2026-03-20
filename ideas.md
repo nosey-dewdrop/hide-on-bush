@@ -8,3 +8,8 @@
 - sticker reactions on posters instead of just "going" count
 - spotify integration for music events (preview track on poster)
 - share poster as image to instagram stories
+- follow system: your board shows events from people you follow
+- user profiles with event history and XP level
+- notification when someone you follow pins a new event
+- calendar sync (export to google calendar / apple calendar)
+- trending tags section in sidebar
