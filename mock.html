@@ -16,7 +16,6 @@
       --border: #c4dfe8;
       --cream: #f7fbfe;
       --baby-light: #ddf0fa;
-      --glow: rgba(135,206,235,0.12);
       --pin-red: #d94040;
       --pin-blue: #4078d9;
       --pin-green: #3ba55d;
@@ -38,132 +37,82 @@
       min-height: 100vh;
       font-size: 12px;
       font-weight: 300;
+      padding: 32px 40px;
     }
 
-    /* ── Sidebar ── */
-    .layout {
+    /* ── Header ── */
+    .header {
       display: flex;
-      min-height: 100vh;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
     }
 
-    .sidebar {
-      width: 220px;
-      border-right: 1px solid var(--border);
-      background: var(--cream);
-      padding: 20px 0;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sidebar-brand {
-      padding: 0 16px 16px;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 12px;
-    }
-
-    .sidebar-brand h1 {
-      font-size: 14px;
+    .brand {
+      font-size: 15px;
       font-weight: 500;
       color: var(--dark);
-      letter-spacing: -0.01em;
     }
 
-    .sidebar-brand h1 em {
-      font-style: normal;
-      color: var(--sky);
+    .brand em { font-style: normal; color: var(--sky); }
+
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    .sidebar-search {
-      margin: 0 12px 14px;
-    }
-
-    .sidebar-search input {
-      width: 100%;
+    .search-box {
       font-family: var(--font);
       font-size: 11px;
       font-weight: 300;
-      padding: 7px 10px;
+      padding: 5px 10px;
       border: 1px solid var(--border);
-      border-radius: 4px;
-      background: var(--baby-bg);
+      border-radius: 3px;
+      background: var(--cream);
       color: var(--dark);
       outline: none;
+      width: 160px;
       transition: border-color 0.2s;
     }
 
-    .sidebar-search input::placeholder { color: var(--light); }
-    .sidebar-search input:focus { border-color: var(--sky); }
+    .search-box::placeholder { color: var(--light); }
+    .search-box:focus { border-color: var(--sky); }
 
-    .sidebar-nav {
-      list-style: none;
-      margin-bottom: 16px;
-    }
-
-    .sidebar-nav li {
-      padding: 7px 16px;
-      cursor: pointer;
-      transition: all 0.15s;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
+    .icon-btn {
+      font-family: var(--font);
       font-size: 11px;
-      font-weight: 400;
+      font-weight: 300;
+      padding: 5px 10px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: none;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all 0.2s;
     }
 
-    .sidebar-nav li:hover { background: var(--baby-light); color: var(--dark); }
-    .sidebar-nav li.active { background: var(--baby-light); color: var(--dark); font-weight: 500; }
-    .sidebar-nav li .nav-icon { font-size: 13px; width: 18px; text-align: center; }
-    .sidebar-nav li .nav-count {
-      margin-left: auto;
+    .icon-btn:hover { border-color: var(--sky); color: var(--dark); }
+    .icon-btn.active { background: var(--baby-light); color: var(--dark); }
+
+    .btn-pin {
+      font-family: var(--font);
       font-size: 10px;
-      color: var(--light);
-      font-weight: 300;
-    }
-
-    .sidebar-section {
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--light);
-      padding: 12px 16px 6px;
-    }
-
-    .sidebar-tags {
-      list-style: none;
-    }
-
-    .sidebar-tags li {
-      padding: 5px 16px;
+      font-weight: 400;
+      padding: 5px 12px;
+      border-radius: 3px;
+      border: none;
+      background: var(--sky);
+      color: #fff;
       cursor: pointer;
-      font-size: 11px;
-      color: var(--muted);
-      transition: all 0.15s;
-      font-weight: 300;
+      transition: background 0.2s;
     }
 
-    .sidebar-tags li:hover { color: var(--dark); background: var(--baby-light); }
-    .sidebar-tags li.active { color: var(--dark); font-weight: 500; }
-
-    .sidebar-bottom {
-      margin-top: auto;
-      padding: 12px 16px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      cursor: pointer;
-    }
+    .btn-pin:hover { background: #6dbfdf; }
 
     .avatar {
-      width: 24px;
-      height: 24px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       background: var(--sky);
       display: flex;
@@ -172,105 +121,34 @@
       font-size: 11px;
       color: #fff;
       font-weight: 500;
-      flex-shrink: 0;
+      cursor: pointer;
     }
 
-    .sidebar-user {
-      font-size: 11px;
-      color: var(--dark);
-      font-weight: 400;
-    }
-
-    .sidebar-xp {
-      font-size: 9px;
-      color: var(--light);
-      font-weight: 300;
-    }
-
-    /* ── Main Content ── */
-    .main {
-      margin-left: 220px;
-      flex: 1;
-      min-height: 100vh;
-    }
-
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(240,248,255,0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 24px;
+    /* ── Tags ── */
+    .tags {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      gap: 4px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
     }
 
-    .topbar-title {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--dark);
-    }
-
-    .topbar-actions {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .btn-sm {
+    .tag {
       font-family: var(--font);
       font-size: 10px;
-      font-weight: 400;
-      padding: 5px 12px;
-      border-radius: 4px;
-      border: 1px solid var(--border);
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-sm:hover { border-color: var(--sky); color: var(--dark); }
-
-    .btn-primary {
-      background: var(--sky);
-      border-color: var(--sky);
-      color: #fff;
-    }
-
-    .btn-primary:hover { background: #6dbfdf; }
-
-    /* ── View Tabs ── */
-    .view-tabs {
-      display: flex;
-      gap: 0;
-      padding: 0 24px;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .view-tab {
-      font-family: var(--font);
-      font-size: 11px;
-      font-weight: 400;
-      padding: 10px 16px;
+      font-weight: 300;
+      padding: 3px 8px;
       border: none;
+      border-radius: 3px;
       background: none;
       color: var(--muted);
       cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.2s;
+      transition: all 0.15s;
     }
 
-    .view-tab:hover { color: var(--dark); }
-    .view-tab.active { color: var(--dark); font-weight: 500; border-bottom-color: var(--sky); }
+    .tag:hover { color: var(--dark); background: var(--baby-light); }
+    .tag.active { color: var(--dark); background: var(--baby-light); font-weight: 400; }
 
     /* ── Cork Board ── */
-    .cork-board {
-      padding: 24px;
-    }
-
     .cork-surface {
       background:
         radial-gradient(ellipse at 20% 50%, rgba(210,170,120,0.15) 0%, transparent 50%),
@@ -279,8 +157,8 @@
       border-radius: 8px;
       padding: 28px;
       position: relative;
-      min-height: 500px;
-      box-shadow: inset 0 2px 8px rgba(0,0,0,0.2), 0 2px 12px rgba(0,0,0,0.1);
+      min-height: 400px;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.2), 0 2px 12px rgba(0,0,0,0.08);
     }
 
     .cork-surface::before {
@@ -290,11 +168,9 @@
       border-radius: 8px;
       background-image:
         radial-gradient(circle at 10% 20%, rgba(0,0,0,0.04) 1px, transparent 1px),
-        radial-gradient(circle at 30% 70%, rgba(0,0,0,0.03) 1px, transparent 1px),
         radial-gradient(circle at 50% 40%, rgba(255,255,255,0.05) 1px, transparent 1px),
-        radial-gradient(circle at 70% 10%, rgba(0,0,0,0.04) 1px, transparent 1px),
         radial-gradient(circle at 90% 60%, rgba(255,255,255,0.04) 1px, transparent 1px);
-      background-size: 80px 80px, 120px 120px, 60px 60px, 100px 100px, 90px 90px;
+      background-size: 80px 80px, 60px 60px, 90px 90px;
       pointer-events: none;
     }
 
@@ -304,31 +180,28 @@
       inset: -3px;
       border-radius: 10px;
       border: 3px solid #5c3a1e;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
       pointer-events: none;
       z-index: -1;
     }
 
     .board-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 22px;
       position: relative;
       z-index: 1;
     }
 
-    /* ── Poster Card ── */
+    /* ── Poster ── */
     .poster {
       position: relative;
       cursor: pointer;
       opacity: 0;
       transform: rotate(var(--rot, 0deg));
-      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    .poster.pinned {
-      animation: pinDown 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    }
+    .poster.pinned { animation: pinDown 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
 
     .poster:nth-child(1) { --rot: -2deg; }
     .poster:nth-child(2) { --rot: 1.5deg; }
@@ -339,11 +212,7 @@
     .poster:nth-child(7) { --rot: -1.5deg; }
     .poster:nth-child(8) { --rot: 0.8deg; }
 
-    .poster:hover {
-      transform: rotate(0deg) scale(1.03) translateY(-3px);
-      z-index: 10;
-    }
-
+    .poster:hover { transform: rotate(0deg) scale(1.03) translateY(-3px); z-index: 10; }
     .poster:hover .poster-card { box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
 
     .poster-card {
@@ -353,7 +222,6 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.12);
     }
 
-    /* ── Pin ── */
     .pin {
       position: absolute;
       top: -7px;
@@ -372,119 +240,50 @@
       box-shadow: 0 2px 4px rgba(0,0,0,0.3), inset 0 -2px 3px rgba(0,0,0,0.2), inset 0 2px 3px rgba(255,255,255,0.3);
     }
 
-    /* ── Tape ── */
     .tape {
-      position: absolute;
-      top: -5px;
-      left: 50%;
+      position: absolute; top: -5px; left: 50%;
       transform: translateX(-50%) rotate(-2deg);
-      width: 44px;
-      height: 16px;
-      background: rgba(255, 235, 150, 0.7);
+      width: 44px; height: 16px;
+      background: rgba(255,235,150,0.7);
       z-index: 5;
-      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
     }
 
-    .tape-alt {
-      transform: translateX(-50%) rotate(3deg);
-      background: rgba(200, 230, 255, 0.65);
-    }
+    .tape-alt { transform: translateX(-50%) rotate(3deg); background: rgba(200,230,255,0.65); }
 
-    /* ── Poster Content ── */
-    .poster-header {
-      padding: 16px 14px 10px;
-    }
-
-    .poster-emoji {
-      font-size: 22px;
-      margin-bottom: 6px;
-      display: block;
-    }
-
-    .poster-title {
-      font-size: 12px;
-      font-weight: 600;
-      color: #1a1a1a;
-      line-height: 1.3;
-    }
-
-    .poster-tags {
-      display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-
-    .poster-tags span {
-      font-size: 9px;
-      font-weight: 400;
-      color: rgba(0,0,0,0.45);
-    }
-
-    .poster-body {
-      padding: 0 14px 14px;
-      font-size: 10px;
-      color: #555;
-    }
-
-    .poster-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 3px;
-    }
-
-    .poster-meta-row {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-weight: 300;
-    }
-
+    .poster-header { padding: 16px 14px 10px; }
+    .poster-emoji { font-size: 22px; margin-bottom: 6px; display: block; }
+    .poster-title { font-size: 12px; font-weight: 600; color: #1a1a1a; line-height: 1.3; }
+    .poster-tags { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 6px; }
+    .poster-tags span { font-size: 9px; font-weight: 400; color: rgba(0,0,0,0.4); }
+    .poster-body { padding: 0 14px 14px; font-size: 10px; color: #555; }
+    .poster-meta { display: flex; flex-direction: column; gap: 3px; }
+    .poster-meta-row { display: flex; align-items: center; gap: 5px; font-weight: 300; }
     .poster-meta-row .icon { font-size: 10px; opacity: 0.6; }
 
     .poster-going {
-      margin-top: 8px;
-      padding-top: 8px;
+      margin-top: 8px; padding-top: 8px;
       border-top: 1px solid #eee;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
     }
 
     .going-count { font-weight: 500; color: var(--dark); font-size: 10px; }
 
     .going-btn {
-      font-family: var(--font);
-      font-size: 9px;
-      font-weight: 500;
-      padding: 3px 8px;
-      border-radius: 3px;
-      border: 1px solid var(--sky);
-      background: transparent;
-      color: var(--dark);
-      cursor: pointer;
-      transition: all 0.2s;
+      font-family: var(--font); font-size: 9px; font-weight: 500;
+      padding: 3px 8px; border-radius: 3px;
+      border: 1px solid var(--sky); background: none;
+      color: var(--dark); cursor: pointer; transition: all 0.2s;
     }
 
     .going-btn:hover { background: var(--sky); color: #fff; }
 
     .poster-author {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 8px;
-      font-size: 9px;
-      color: #888;
-      font-weight: 300;
+      display: flex; align-items: center; gap: 5px;
+      margin-top: 8px; font-size: 9px; color: #888; font-weight: 300;
     }
 
-    .poster-author .avatar {
-      width: 14px;
-      height: 14px;
-      font-size: 7px;
-    }
+    .poster-author .avatar { width: 14px; height: 14px; font-size: 7px; }
 
-    /* ── Poster Colors ── */
     .poster-color-mint .poster-header { background: #e8f5e9; }
     .poster-color-lavender .poster-header { background: #ede7f6; }
     .poster-color-peach .poster-header { background: #fce4ec; }
@@ -494,116 +293,56 @@
     .poster-color-sage .poster-header { background: #e8f5e9; }
     .poster-color-rose .poster-header { background: #fce4ec; }
 
-    /* ── Just Pinned ── */
     .just-pinned-badge {
-      position: absolute;
-      top: -5px;
-      right: -5px;
-      background: var(--sky);
-      color: #fff;
-      font-size: 8px;
-      font-weight: 500;
-      padding: 2px 6px;
-      border-radius: 3px;
-      z-index: 6;
+      position: absolute; top: -5px; right: -5px;
+      background: var(--sky); color: #fff;
+      font-size: 8px; font-weight: 500;
+      padding: 2px 6px; border-radius: 3px; z-index: 6;
       animation: badgePulse 2s ease infinite;
     }
 
-    /* ── Calendar View ── */
-    .calendar-view {
-      padding: 24px;
-      display: none;
-    }
-
+    /* ── Calendar ── */
+    .calendar-view { margin-top: 24px; display: none; }
     .calendar-view.active { display: block; }
-    .cork-board.active { display: block; }
-    .cork-board { display: none; }
 
     .cal-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 16px;
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
     }
 
-    .cal-month {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--dark);
-    }
+    .cal-month { font-size: 13px; font-weight: 500; }
 
-    .cal-nav {
-      display: flex;
-      gap: 4px;
-    }
-
+    .cal-nav { display: flex; gap: 4px; }
     .cal-nav button {
-      font-family: var(--font);
-      font-size: 11px;
-      padding: 4px 10px;
-      border: 1px solid var(--border);
-      border-radius: 3px;
-      background: none;
-      color: var(--muted);
-      cursor: pointer;
-      transition: all 0.2s;
+      font-family: var(--font); font-size: 10px; padding: 4px 10px;
+      border: 1px solid var(--border); border-radius: 3px;
+      background: none; color: var(--muted); cursor: pointer;
     }
-
     .cal-nav button:hover { border-color: var(--sky); color: var(--dark); }
 
     .cal-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      overflow: hidden;
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      gap: 1px; background: var(--border);
+      border: 1px solid var(--border); border-radius: 6px; overflow: hidden;
     }
 
     .cal-day-label {
-      background: var(--cream);
-      padding: 8px;
-      text-align: center;
-      font-size: 9px;
-      font-weight: 500;
-      color: var(--muted);
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
+      background: var(--cream); padding: 8px; text-align: center;
+      font-size: 9px; font-weight: 500; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.06em;
     }
 
-    .cal-day {
-      background: #fff;
-      padding: 8px;
-      min-height: 80px;
-      position: relative;
-    }
-
+    .cal-day { background: #fff; padding: 6px; min-height: 72px; }
     .cal-day.other-month { background: var(--cream); }
     .cal-day.today { background: var(--baby-light); }
-
-    .cal-num {
-      font-size: 10px;
-      font-weight: 400;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
+    .cal-num { font-size: 10px; color: var(--muted); margin-bottom: 3px; }
     .cal-day.today .cal-num { color: var(--sky); font-weight: 600; }
 
     .cal-event {
-      font-size: 8px;
-      padding: 2px 4px;
-      border-radius: 2px;
-      margin-bottom: 2px;
-      font-weight: 400;
-      cursor: pointer;
-      transition: opacity 0.2s;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
+      font-size: 8px; padding: 2px 4px; border-radius: 2px;
+      margin-bottom: 2px; font-weight: 400; cursor: pointer;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
     }
-
     .cal-event:hover { opacity: 0.7; }
     .cal-event.cat-study { background: #e3f2fd; color: #1565c0; }
     .cal-event.cat-music { background: #ede7f6; color: #6a1b9a; }
@@ -620,400 +359,284 @@
       100% { opacity: 1; transform: rotate(var(--rot, 0deg)) scale(1) translateY(0); }
     }
 
-    @keyframes badgePulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.6; }
-    }
+    @keyframes badgePulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
 
     /* ── Responsive ── */
     @media (max-width: 768px) {
-      .sidebar { display: none; }
-      .main { margin-left: 0; }
-      .board-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 16px; }
+      body { padding: 16px; }
+      .header { flex-wrap: wrap; gap: 10px; }
+      .search-box { width: 120px; }
       .cork-surface { padding: 16px; }
+      .board-grid { grid-template-columns: 1fr 1fr; gap: 14px; }
+    }
+
+    @media (max-width: 480px) {
+      .board-grid { grid-template-columns: 1fr; }
+      .header-right { flex-wrap: wrap; }
     }
   </style>
 </head>
 <body>
-  <div class="layout">
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-      <div class="sidebar-brand">
-        <h1><em>league</em> of bilkent</h1>
-      </div>
+  <!-- Header -->
+  <div class="header">
+    <span class="brand"><em>league</em> of bilkent</span>
+    <div class="header-right">
+      <input type="text" class="search-box" placeholder="search..." oninput="searchEvents(this.value)">
+      <button class="icon-btn" onclick="toggleCalendar(this)">calendar</button>
+      <button class="btn-pin">+ pin</button>
+      <div class="avatar">D</div>
+    </div>
+  </div>
 
-      <div class="sidebar-search">
-        <input type="text" placeholder="search events..." id="searchInput" oninput="searchEvents(this.value)">
-      </div>
+  <!-- Tags -->
+  <div class="tags">
+    <button class="tag active" onclick="filterByTag('all', this)">#all</button>
+    <button class="tag" onclick="filterByTag('music', this)">#music</button>
+    <button class="tag" onclick="filterByTag('sports', this)">#sports</button>
+    <button class="tag" onclick="filterByTag('study', this)">#study</button>
+    <button class="tag" onclick="filterByTag('arts', this)">#arts</button>
+    <button class="tag" onclick="filterByTag('food', this)">#food</button>
+    <button class="tag" onclick="filterByTag('tech', this)">#tech</button>
+  </div>
 
-      <ul class="sidebar-nav">
-        <li class="active" onclick="showView('board', this)">
-          <span class="nav-icon">&#9632;</span> board
-          <span class="nav-count">8</span>
-        </li>
-        <li onclick="showView('calendar', this)">
-          <span class="nav-icon">&#9633;</span> calendar
-        </li>
-        <li>
-          <span class="nav-icon">&#9654;</span> following
-          <span class="nav-count">3</span>
-        </li>
-        <li>
-          <span class="nav-icon">&#9734;</span> my events
-        </li>
-      </ul>
+  <!-- Board -->
+  <div id="boardView">
+    <div class="cork-surface">
+      <div class="board-grid">
 
-      <div class="sidebar-section">tags</div>
-      <ul class="sidebar-tags" id="tagList">
-        <li class="active" onclick="filterByTag('all', this)">#all</li>
-        <li onclick="filterByTag('music', this)">#music</li>
-        <li onclick="filterByTag('sports', this)">#sports</li>
-        <li onclick="filterByTag('study', this)">#study</li>
-        <li onclick="filterByTag('arts', this)">#arts</li>
-        <li onclick="filterByTag('food', this)">#food</li>
-        <li onclick="filterByTag('tech', this)">#tech</li>
-      </ul>
-
-      <div class="sidebar-bottom">
-        <div class="avatar">D</div>
-        <div>
-          <div class="sidebar-user">damla</div>
-          <div class="sidebar-xp">420 xp</div>
-        </div>
-      </div>
-    </aside>
-
-    <!-- Main -->
-    <div class="main">
-      <header class="topbar">
-        <span class="topbar-title">board</span>
-        <div class="topbar-actions">
-          <button class="btn-sm">sort</button>
-          <button class="btn-sm btn-primary">+ pin event</button>
-        </div>
-      </header>
-
-      <!-- Board View -->
-      <div class="cork-board active" id="boardView">
-        <div class="cork-surface">
-          <div class="board-grid">
-
-            <div class="poster poster-color-sky" data-category="study" data-title="Algorithms Study Group">
-              <div class="pin" style="--pin-color: var(--pin-blue)"></div>
-              <div class="poster-card">
-                <div class="poster-header">
-                  <span class="poster-emoji">📚</span>
-                  <div class="poster-title">Algorithms Study Group</div>
-                  <div class="poster-tags"><span>#study</span> <span>#cs</span></div>
-                </div>
-                <div class="poster-body">
-                  <div class="poster-meta">
-                    <div class="poster-meta-row"><span class="icon">📅</span> mar 22 · 14:00</div>
-                    <div class="poster-meta-row"><span class="icon">📍</span> EA-409</div>
-                  </div>
-                  <div class="poster-going">
-                    <span class="going-count">23 going</span>
-                    <button class="going-btn">+ join</button>
-                  </div>
-                  <div class="poster-author"><div class="avatar">A</div> ali posted</div>
-                </div>
-              </div>
+        <div class="poster poster-color-sky" data-category="study" data-title="Algorithms Study Group">
+          <div class="pin" style="--pin-color: var(--pin-blue)"></div>
+          <div class="poster-card">
+            <div class="poster-header">
+              <span class="poster-emoji">📚</span>
+              <div class="poster-title">Algorithms Study Group</div>
+              <div class="poster-tags"><span>#study</span> <span>#cs</span></div>
             </div>
-
-            <div class="poster poster-color-lavender" data-category="music" data-title="Jazz Night">
-              <div class="tape"></div>
-              <div class="poster-card">
-                <div class="poster-header">
-                  <span class="poster-emoji">🎷</span>
-                  <div class="poster-title">Jazz Night</div>
-                  <div class="poster-tags"><span>#music</span> <span>#live</span></div>
-                </div>
-                <div class="poster-body">
-                  <div class="poster-meta">
-                    <div class="poster-meta-row"><span class="icon">📅</span> mar 24 · 20:00</div>
-                    <div class="poster-meta-row"><span class="icon">📍</span> Student Center</div>
-                  </div>
-                  <div class="poster-going">
-                    <span class="going-count">47 going</span>
-                    <button class="going-btn">+ join</button>
-                  </div>
-                  <div class="poster-author"><div class="avatar">E</div> ece posted</div>
-                </div>
+            <div class="poster-body">
+              <div class="poster-meta">
+                <div class="poster-meta-row"><span class="icon">📅</span> mar 22 · 14:00</div>
+                <div class="poster-meta-row"><span class="icon">📍</span> EA-409</div>
               </div>
-            </div>
-
-            <div class="poster poster-color-mint" data-category="sports" data-title="Football Tournament">
-              <div class="pin" style="--pin-color: var(--pin-green)"></div>
-              <div class="poster-card">
-                <div class="poster-header">
-                  <span class="poster-emoji">⚽</span>
-                  <div class="poster-title">Football Tournament</div>
-                  <div class="poster-tags"><span>#sports</span> <span>#tournament</span></div>
-                </div>
-                <div class="poster-body">
-                  <div class="poster-meta">
-                    <div class="poster-meta-row"><span class="icon">📅</span> mar 28 · 16:00</div>
-                    <div class="poster-meta-row"><span class="icon">📍</span> Main Field</div>
-                  </div>
-                  <div class="poster-going">
-                    <span class="going-count">64 going</span>
-                    <button class="going-btn">+ join</button>
-                  </div>
-                  <div class="poster-author"><div class="avatar">K</div> kerem posted</div>
-                </div>
+              <div class="poster-going">
+                <span class="going-count">23 going</span>
+                <button class="going-btn">+ join</button>
               </div>
+              <div class="poster-author"><div class="avatar">A</div> ali</div>
             </div>
-
-            <div class="poster poster-color-peach" data-category="arts" data-title="Photography Walk">
-              <div class="pin" style="--pin-color: var(--pin-yellow)"></div>
-              <span class="just-pinned-badge">just pinned!</span>
-              <div class="poster-card">
-                <div class="poster-header">
-                  <span class="poster-emoji">📸</span>
-                  <div class="poster-title">Photography Walk</div>
-                  <div class="poster-tags"><span>#arts</span> <span>#photo</span></div>
-                </div>
-                <div class="poster-body">
-                  <div class="poster-meta">
-                    <div class="poster-meta-row"><span class="icon">📅</span> mar 30 · 10:00</div>
-                    <div class="poster-meta-row"><span class="icon">📍</span> Main Gate</div>
-                  </div>
-                  <div class="poster-going">
-                    <span class="going-count">12 going</span>
-                    <button class="going-btn">+ join</button>
-                  </div>
-                  <div class="poster-author"><div class="avatar">D</div> damla posted</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="poster poster-color-coral" data-category="study" data-title="Debate Club">
-              <div class="tape tape-alt"></div>
-              <div class="poster-card">
-                <div class="poster-header">
-                  <span class="poster-emoji">🗣️</span>
-                  <div class="poster-title">Debate Club</div>
-                  <div class="poster-tags"><span>#study</span> <span>#debate</span></div>
-                </div>
-                <div class="poster-body">
-                  <div class="poster-meta">
-                    <div class="poster-meta-row"><span class="icon">📅</span> mar 25 · 18:00</div>
-                    <div class="poster-meta-row"><span class="icon">📍</span> G-101</div>
-                  </div>
-                  <div class="poster-going">
-                    <span class="going-count">31 going</span>
-                    <button class="going-btn">+ join</button>
-                  </div>
-                  <div class="poster-author"><div class="avatar">M</div> mert posted</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="poster poster-color-butter" data-category="food" data-title="Cooking Workshop">
-              <div class="pin" style="--pin-color: var(--pin-red)"></div>
-              <div class="poster-card">
-                <div class="poster-header">
-                  <span class="poster-emoji">🍳</span>
-                  <div class="poster-title">Cooking Workshop</div>
-                  <div class="poster-tags"><span>#food</span> <span>#workshop</span></div>
-                </div>
-                <div class="poster-body">
-                  <div class="poster-meta">
-                    <div class="poster-meta-row"><span class="icon">📅</span> apr 1 · 15:00</div>
-                    <div class="poster-meta-row"><span class="icon">📍</span> Dorm 76 Kitchen</div>
-                  </div>
-                  <div class="poster-going">
-                    <span class="going-count">18 going</span>
-                    <button class="going-btn">+ join</button>
-                  </div>
-                  <div class="poster-author"><div class="avatar">S</div> selin posted</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="poster poster-color-sage" data-category="tech" data-title="Spring Hackathon 2026">
-              <div class="pin" style="--pin-color: var(--pin-blue)"></div>
-              <div class="poster-card">
-                <div class="poster-header">
-                  <span class="poster-emoji">💻</span>
-                  <div class="poster-title">Spring Hackathon 2026</div>
-                  <div class="poster-tags"><span>#tech</span> <span>#hackathon</span></div>
-                </div>
-                <div class="poster-body">
-                  <div class="poster-meta">
-                    <div class="poster-meta-row"><span class="icon">📅</span> apr 5-6 · 09:00</div>
-                    <div class="poster-meta-row"><span class="icon">📍</span> EE Building</div>
-                  </div>
-                  <div class="poster-going">
-                    <span class="going-count">89 going</span>
-                    <button class="going-btn">+ join</button>
-                  </div>
-                  <div class="poster-author"><div class="avatar">B</div> berk posted</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="poster poster-color-rose" data-category="sports" data-title="Morning Yoga">
-              <div class="tape"></div>
-              <div class="poster-card">
-                <div class="poster-header">
-                  <span class="poster-emoji">🧘</span>
-                  <div class="poster-title">Morning Yoga</div>
-                  <div class="poster-tags"><span>#sports</span> <span>#wellness</span></div>
-                </div>
-                <div class="poster-body">
-                  <div class="poster-meta">
-                    <div class="poster-meta-row"><span class="icon">📅</span> every tue & thu · 07:30</div>
-                    <div class="poster-meta-row"><span class="icon">📍</span> East Garden</div>
-                  </div>
-                  <div class="poster-going">
-                    <span class="going-count">35 going</span>
-                    <button class="going-btn">+ join</button>
-                  </div>
-                  <div class="poster-author"><div class="avatar">Z</div> zeynep posted</div>
-                </div>
-              </div>
-            </div>
-
           </div>
         </div>
-      </div>
 
-      <!-- Calendar View -->
-      <div class="calendar-view" id="calendarView">
-        <div class="cal-header">
-          <span class="cal-month">march 2026</span>
-          <div class="cal-nav">
-            <button>&larr;</button>
-            <button>today</button>
-            <button>&rarr;</button>
+        <div class="poster poster-color-lavender" data-category="music" data-title="Jazz Night">
+          <div class="tape"></div>
+          <div class="poster-card">
+            <div class="poster-header">
+              <span class="poster-emoji">🎷</span>
+              <div class="poster-title">Jazz Night</div>
+              <div class="poster-tags"><span>#music</span> <span>#live</span></div>
+            </div>
+            <div class="poster-body">
+              <div class="poster-meta">
+                <div class="poster-meta-row"><span class="icon">📅</span> mar 24 · 20:00</div>
+                <div class="poster-meta-row"><span class="icon">📍</span> Student Center</div>
+              </div>
+              <div class="poster-going">
+                <span class="going-count">47 going</span>
+                <button class="going-btn">+ join</button>
+              </div>
+              <div class="poster-author"><div class="avatar">E</div> ece</div>
+            </div>
           </div>
         </div>
-        <div class="cal-grid">
-          <div class="cal-day-label">mon</div>
-          <div class="cal-day-label">tue</div>
-          <div class="cal-day-label">wed</div>
-          <div class="cal-day-label">thu</div>
-          <div class="cal-day-label">fri</div>
-          <div class="cal-day-label">sat</div>
-          <div class="cal-day-label">sun</div>
 
-          <div class="cal-day other-month"><div class="cal-num">23</div></div>
-          <div class="cal-day other-month"><div class="cal-num">24</div></div>
-          <div class="cal-day other-month"><div class="cal-num">25</div></div>
-          <div class="cal-day other-month"><div class="cal-num">26</div></div>
-          <div class="cal-day other-month"><div class="cal-num">27</div></div>
-          <div class="cal-day other-month"><div class="cal-num">28</div></div>
-          <div class="cal-day"><div class="cal-num">1</div></div>
-
-          <div class="cal-day"><div class="cal-num">2</div></div>
-          <div class="cal-day"><div class="cal-num">3</div></div>
-          <div class="cal-day"><div class="cal-num">4</div></div>
-          <div class="cal-day"><div class="cal-num">5</div></div>
-          <div class="cal-day"><div class="cal-num">6</div></div>
-          <div class="cal-day"><div class="cal-num">7</div></div>
-          <div class="cal-day"><div class="cal-num">8</div></div>
-
-          <div class="cal-day"><div class="cal-num">9</div></div>
-          <div class="cal-day"><div class="cal-num">10</div></div>
-          <div class="cal-day"><div class="cal-num">11</div></div>
-          <div class="cal-day"><div class="cal-num">12</div></div>
-          <div class="cal-day"><div class="cal-num">13</div></div>
-          <div class="cal-day"><div class="cal-num">14</div></div>
-          <div class="cal-day"><div class="cal-num">15</div></div>
-
-          <div class="cal-day"><div class="cal-num">16</div></div>
-          <div class="cal-day"><div class="cal-num">17</div></div>
-          <div class="cal-day"><div class="cal-num">18</div></div>
-          <div class="cal-day"><div class="cal-num">19</div></div>
-          <div class="cal-day today"><div class="cal-num">20</div></div>
-          <div class="cal-day"><div class="cal-num">21</div></div>
-          <div class="cal-day">
-            <div class="cal-num">22</div>
-            <div class="cal-event cat-study">📚 Algorithms</div>
-          </div>
-
-          <div class="cal-day"><div class="cal-num">23</div></div>
-          <div class="cal-day">
-            <div class="cal-num">24</div>
-            <div class="cal-event cat-music">🎷 Jazz Night</div>
-          </div>
-          <div class="cal-day">
-            <div class="cal-num">25</div>
-            <div class="cal-event cat-study">🗣️ Debate</div>
-          </div>
-          <div class="cal-day"><div class="cal-num">26</div></div>
-          <div class="cal-day"><div class="cal-num">27</div></div>
-          <div class="cal-day">
-            <div class="cal-num">28</div>
-            <div class="cal-event cat-sports">⚽ Football</div>
-          </div>
-          <div class="cal-day"><div class="cal-num">29</div></div>
-
-          <div class="cal-day">
-            <div class="cal-num">30</div>
-            <div class="cal-event cat-arts">📸 Photo Walk</div>
-          </div>
-          <div class="cal-day"><div class="cal-num">31</div></div>
-          <div class="cal-day other-month"><div class="cal-num">1</div>
-            <div class="cal-event cat-food">🍳 Cooking</div>
-          </div>
-          <div class="cal-day other-month"><div class="cal-num">2</div></div>
-          <div class="cal-day other-month"><div class="cal-num">3</div></div>
-          <div class="cal-day other-month"><div class="cal-num">4</div></div>
-          <div class="cal-day other-month">
-            <div class="cal-num">5</div>
-            <div class="cal-event cat-tech">💻 Hackathon</div>
+        <div class="poster poster-color-mint" data-category="sports" data-title="Football Tournament">
+          <div class="pin" style="--pin-color: var(--pin-green)"></div>
+          <div class="poster-card">
+            <div class="poster-header">
+              <span class="poster-emoji">⚽</span>
+              <div class="poster-title">Football Tournament</div>
+              <div class="poster-tags"><span>#sports</span> <span>#tournament</span></div>
+            </div>
+            <div class="poster-body">
+              <div class="poster-meta">
+                <div class="poster-meta-row"><span class="icon">📅</span> mar 28 · 16:00</div>
+                <div class="poster-meta-row"><span class="icon">📍</span> Main Field</div>
+              </div>
+              <div class="poster-going">
+                <span class="going-count">64 going</span>
+                <button class="going-btn">+ join</button>
+              </div>
+              <div class="poster-author"><div class="avatar">K</div> kerem</div>
+            </div>
           </div>
         </div>
-      </div>
 
+        <div class="poster poster-color-peach" data-category="arts" data-title="Photography Walk">
+          <div class="pin" style="--pin-color: var(--pin-yellow)"></div>
+          <span class="just-pinned-badge">just pinned!</span>
+          <div class="poster-card">
+            <div class="poster-header">
+              <span class="poster-emoji">📸</span>
+              <div class="poster-title">Photography Walk</div>
+              <div class="poster-tags"><span>#arts</span> <span>#photo</span></div>
+            </div>
+            <div class="poster-body">
+              <div class="poster-meta">
+                <div class="poster-meta-row"><span class="icon">📅</span> mar 30 · 10:00</div>
+                <div class="poster-meta-row"><span class="icon">📍</span> Main Gate</div>
+              </div>
+              <div class="poster-going">
+                <span class="going-count">12 going</span>
+                <button class="going-btn">+ join</button>
+              </div>
+              <div class="poster-author"><div class="avatar">D</div> damla</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="poster poster-color-coral" data-category="study" data-title="Debate Club">
+          <div class="tape tape-alt"></div>
+          <div class="poster-card">
+            <div class="poster-header">
+              <span class="poster-emoji">🗣️</span>
+              <div class="poster-title">Debate Club</div>
+              <div class="poster-tags"><span>#study</span> <span>#debate</span></div>
+            </div>
+            <div class="poster-body">
+              <div class="poster-meta">
+                <div class="poster-meta-row"><span class="icon">📅</span> mar 25 · 18:00</div>
+                <div class="poster-meta-row"><span class="icon">📍</span> G-101</div>
+              </div>
+              <div class="poster-going">
+                <span class="going-count">31 going</span>
+                <button class="going-btn">+ join</button>
+              </div>
+              <div class="poster-author"><div class="avatar">M</div> mert</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="poster poster-color-butter" data-category="food" data-title="Cooking Workshop">
+          <div class="pin" style="--pin-color: var(--pin-red)"></div>
+          <div class="poster-card">
+            <div class="poster-header">
+              <span class="poster-emoji">🍳</span>
+              <div class="poster-title">Cooking Workshop</div>
+              <div class="poster-tags"><span>#food</span> <span>#workshop</span></div>
+            </div>
+            <div class="poster-body">
+              <div class="poster-meta">
+                <div class="poster-meta-row"><span class="icon">📅</span> apr 1 · 15:00</div>
+                <div class="poster-meta-row"><span class="icon">📍</span> Dorm 76 Kitchen</div>
+              </div>
+              <div class="poster-going">
+                <span class="going-count">18 going</span>
+                <button class="going-btn">+ join</button>
+              </div>
+              <div class="poster-author"><div class="avatar">S</div> selin</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="poster poster-color-sage" data-category="tech" data-title="Spring Hackathon 2026">
+          <div class="pin" style="--pin-color: var(--pin-blue)"></div>
+          <div class="poster-card">
+            <div class="poster-header">
+              <span class="poster-emoji">💻</span>
+              <div class="poster-title">Spring Hackathon 2026</div>
+              <div class="poster-tags"><span>#tech</span> <span>#hackathon</span></div>
+            </div>
+            <div class="poster-body">
+              <div class="poster-meta">
+                <div class="poster-meta-row"><span class="icon">📅</span> apr 5-6 · 09:00</div>
+                <div class="poster-meta-row"><span class="icon">📍</span> EE Building</div>
+              </div>
+              <div class="poster-going">
+                <span class="going-count">89 going</span>
+                <button class="going-btn">+ join</button>
+              </div>
+              <div class="poster-author"><div class="avatar">B</div> berk</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="poster poster-color-rose" data-category="sports" data-title="Morning Yoga">
+          <div class="tape"></div>
+          <div class="poster-card">
+            <div class="poster-header">
+              <span class="poster-emoji">🧘</span>
+              <div class="poster-title">Morning Yoga</div>
+              <div class="poster-tags"><span>#sports</span> <span>#wellness</span></div>
+            </div>
+            <div class="poster-body">
+              <div class="poster-meta">
+                <div class="poster-meta-row"><span class="icon">📅</span> every tue & thu · 07:30</div>
+                <div class="poster-meta-row"><span class="icon">📍</span> East Garden</div>
+              </div>
+              <div class="poster-going">
+                <span class="going-count">35 going</span>
+                <button class="going-btn">+ join</button>
+              </div>
+              <div class="poster-author"><div class="avatar">Z</div> zeynep</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <div class="calendar-view" id="calendarView">
+    <div class="cal-header">
+      <span class="cal-month">march 2026</span>
+      <div class="cal-nav">
+        <button>&larr;</button>
+        <button>today</button>
+        <button>&rarr;</button>
+      </div>
+    </div>
+    <div class="cal-grid">
+      <div class="cal-day-label">mon</div><div class="cal-day-label">tue</div><div class="cal-day-label">wed</div><div class="cal-day-label">thu</div><div class="cal-day-label">fri</div><div class="cal-day-label">sat</div><div class="cal-day-label">sun</div>
+      <div class="cal-day other-month"><div class="cal-num">23</div></div><div class="cal-day other-month"><div class="cal-num">24</div></div><div class="cal-day other-month"><div class="cal-num">25</div></div><div class="cal-day other-month"><div class="cal-num">26</div></div><div class="cal-day other-month"><div class="cal-num">27</div></div><div class="cal-day other-month"><div class="cal-num">28</div></div><div class="cal-day"><div class="cal-num">1</div></div>
+      <div class="cal-day"><div class="cal-num">2</div></div><div class="cal-day"><div class="cal-num">3</div></div><div class="cal-day"><div class="cal-num">4</div></div><div class="cal-day"><div class="cal-num">5</div></div><div class="cal-day"><div class="cal-num">6</div></div><div class="cal-day"><div class="cal-num">7</div></div><div class="cal-day"><div class="cal-num">8</div></div>
+      <div class="cal-day"><div class="cal-num">9</div></div><div class="cal-day"><div class="cal-num">10</div></div><div class="cal-day"><div class="cal-num">11</div></div><div class="cal-day"><div class="cal-num">12</div></div><div class="cal-day"><div class="cal-num">13</div></div><div class="cal-day"><div class="cal-num">14</div></div><div class="cal-day"><div class="cal-num">15</div></div>
+      <div class="cal-day"><div class="cal-num">16</div></div><div class="cal-day"><div class="cal-num">17</div></div><div class="cal-day"><div class="cal-num">18</div></div><div class="cal-day"><div class="cal-num">19</div></div><div class="cal-day today"><div class="cal-num">20</div></div><div class="cal-day"><div class="cal-num">21</div></div><div class="cal-day"><div class="cal-num">22</div><div class="cal-event cat-study">📚 Algorithms</div></div>
+      <div class="cal-day"><div class="cal-num">23</div></div><div class="cal-day"><div class="cal-num">24</div><div class="cal-event cat-music">🎷 Jazz Night</div></div><div class="cal-day"><div class="cal-num">25</div><div class="cal-event cat-study">🗣️ Debate</div></div><div class="cal-day"><div class="cal-num">26</div></div><div class="cal-day"><div class="cal-num">27</div></div><div class="cal-day"><div class="cal-num">28</div><div class="cal-event cat-sports">⚽ Football</div></div><div class="cal-day"><div class="cal-num">29</div></div>
+      <div class="cal-day"><div class="cal-num">30</div><div class="cal-event cat-arts">📸 Photo Walk</div></div><div class="cal-day"><div class="cal-num">31</div></div><div class="cal-day other-month"><div class="cal-num">1</div><div class="cal-event cat-food">🍳 Cooking</div></div><div class="cal-day other-month"><div class="cal-num">2</div></div><div class="cal-day other-month"><div class="cal-num">3</div></div><div class="cal-day other-month"><div class="cal-num">4</div></div><div class="cal-day other-month"><div class="cal-num">5</div><div class="cal-event cat-tech">💻 Hackathon</div></div>
     </div>
   </div>
 
   <script>
-    // Pin posters one by one
-    (function() {
-      const posters = document.querySelectorAll('.poster');
-      posters.forEach((p, i) => {
-        setTimeout(() => p.classList.add('pinned'), i * 350);
-      });
-    })();
+    // Pin one by one
+    document.querySelectorAll('.poster').forEach((p, i) => {
+      setTimeout(() => p.classList.add('pinned'), i * 350);
+    });
 
-    // View switching
-    function showView(view, el) {
-      document.querySelectorAll('.sidebar-nav li').forEach(li => li.classList.remove('active'));
-      el.classList.add('active');
-
-      document.getElementById('boardView').classList.toggle('active', view === 'board');
-      document.getElementById('calendarView').classList.toggle('active', view === 'calendar');
-
-      const title = document.querySelector('.topbar-title');
-      title.textContent = view;
+    // Calendar toggle
+    function toggleCalendar(btn) {
+      const cal = document.getElementById('calendarView');
+      const board = document.getElementById('boardView');
+      const showing = cal.classList.toggle('active');
+      board.style.display = showing ? 'none' : '';
+      btn.classList.toggle('active', showing);
     }
 
-    // Tag filtering
+    // Tag filter
     function filterByTag(tag, el) {
-      document.querySelectorAll('.sidebar-tags li').forEach(li => li.classList.remove('active'));
+      document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
       el.classList.add('active');
-
-      document.querySelectorAll('.poster').forEach(poster => {
-        if (tag === 'all' || poster.dataset.category === tag) {
-          poster.style.display = '';
-        } else {
-          poster.style.display = 'none';
-        }
+      document.querySelectorAll('.poster').forEach(p => {
+        p.style.display = (tag === 'all' || p.dataset.category === tag) ? '' : 'none';
       });
     }
 
     // Search
-    function searchEvents(query) {
-      const q = query.toLowerCase().trim();
-      document.querySelectorAll('.poster').forEach(poster => {
-        const title = poster.dataset.title.toLowerCase();
-        const cat = poster.dataset.category;
-        poster.style.display = (!q || title.includes(q) || cat.includes(q)) ? '' : 'none';
+    function searchEvents(q) {
+      q = q.toLowerCase().trim();
+      document.querySelectorAll('.poster').forEach(p => {
+        const t = p.dataset.title.toLowerCase();
+        p.style.display = (!q || t.includes(q) || p.dataset.category.includes(q)) ? '' : 'none';
       });
     }
   </script>
