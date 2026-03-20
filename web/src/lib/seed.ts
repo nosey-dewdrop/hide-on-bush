@@ -103,12 +103,12 @@ const events: Event[] = [
     date: '2026-03-22',
     time: '14:00',
     location: 'EA-409',
-    tags: ['study'],
+    tags: ['study', 'cs'],
     posterColor: 'sky',
     pinType: 'pin',
     pinColor: 'blue',
     authorId: 'user-ali',
-    goingUserIds: ['user-ali', 'user-damla', 'user-berk', 'user-mert'],
+    goingUserIds: Array.from({ length: 23 }, (_, i) => `going-alg-${i}`),
     createdAt: '2026-03-18T09:00:00.000Z',
   },
   {
@@ -120,12 +120,12 @@ const events: Event[] = [
     date: '2026-03-24',
     time: '20:00',
     location: 'Student Center',
-    tags: ['music'],
+    tags: ['music', 'live'],
     posterColor: 'lavender',
     pinType: 'tape',
     pinColor: 'yellow',
     authorId: 'user-ece',
-    goingUserIds: ['user-ece', 'user-damla', 'user-zeynep', 'user-selin', 'user-kerem'],
+    goingUserIds: Array.from({ length: 47 }, (_, i) => `going-jazz-${i}`),
     createdAt: '2026-03-17T16:00:00.000Z',
   },
   {
@@ -137,12 +137,12 @@ const events: Event[] = [
     date: '2026-03-28',
     time: '16:00',
     location: 'Main Field',
-    tags: ['sports'],
+    tags: ['sports', 'tournament'],
     posterColor: 'mint',
     pinType: 'pin',
     pinColor: 'green',
     authorId: 'user-kerem',
-    goingUserIds: ['user-kerem', 'user-ali', 'user-berk', 'user-mert', 'user-damla'],
+    goingUserIds: Array.from({ length: 64 }, (_, i) => `going-foot-${i}`),
     createdAt: '2026-03-16T10:00:00.000Z',
   },
   {
@@ -154,13 +154,13 @@ const events: Event[] = [
     date: '2026-03-30',
     time: '10:00',
     location: 'Main Gate',
-    tags: ['arts'],
+    tags: ['arts', 'photo'],
     posterColor: 'peach',
     pinType: 'pin',
     pinColor: 'yellow',
     authorId: 'user-damla',
-    goingUserIds: ['user-damla', 'user-ece', 'user-kerem'],
-    createdAt: '2026-03-20T08:00:00.000Z',
+    goingUserIds: Array.from({ length: 12 }, (_, i) => `going-photo-${i}`),
+    createdAt: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(), // 2 hours ago
   },
   {
     id: 'event-debate',
@@ -171,12 +171,12 @@ const events: Event[] = [
     date: '2026-03-25',
     time: '18:00',
     location: 'G-101',
-    tags: ['study'],
+    tags: ['study', 'debate'],
     posterColor: 'coral',
     pinType: 'tape-alt',
     pinColor: 'blue',
     authorId: 'user-mert',
-    goingUserIds: ['user-mert', 'user-ali', 'user-damla', 'user-ece'],
+    goingUserIds: Array.from({ length: 31 }, (_, i) => `going-debate-${i}`),
     createdAt: '2026-03-15T14:00:00.000Z',
   },
   {
@@ -188,12 +188,12 @@ const events: Event[] = [
     date: '2026-04-01',
     time: '15:00',
     location: 'Dorm 76 Kitchen',
-    tags: ['food'],
+    tags: ['food', 'workshop'],
     posterColor: 'butter',
     pinType: 'pin',
     pinColor: 'red',
     authorId: 'user-selin',
-    goingUserIds: ['user-selin', 'user-zeynep', 'user-damla'],
+    goingUserIds: Array.from({ length: 18 }, (_, i) => `going-cook-${i}`),
     createdAt: '2026-03-19T11:00:00.000Z',
   },
   {
@@ -205,12 +205,12 @@ const events: Event[] = [
     date: '2026-04-05',
     time: '09:00',
     location: 'EE Building',
-    tags: ['tech'],
+    tags: ['tech', 'hackathon'],
     posterColor: 'sage',
     pinType: 'pin',
     pinColor: 'blue',
     authorId: 'user-berk',
-    goingUserIds: ['user-berk', 'user-ali', 'user-damla', 'user-kerem', 'user-mert', 'user-ece'],
+    goingUserIds: Array.from({ length: 89 }, (_, i) => `going-hack-${i}`),
     createdAt: '2026-03-14T09:00:00.000Z',
   },
   {
@@ -222,12 +222,13 @@ const events: Event[] = [
     date: '2026-03-25',
     time: '07:30',
     location: 'East Garden',
-    tags: ['sports'],
+    displayDate: 'every tue & thu',
+    tags: ['sports', 'wellness'],
     posterColor: 'rose',
     pinType: 'tape',
     pinColor: 'green',
     authorId: 'user-zeynep',
-    goingUserIds: ['user-zeynep', 'user-damla', 'user-selin', 'user-ece'],
+    goingUserIds: Array.from({ length: 35 }, (_, i) => `going-yoga-${i}`),
     createdAt: '2026-03-10T06:00:00.000Z',
   },
 ];
@@ -358,11 +359,17 @@ const follows: Follow[] = [
  * Seeds localStorage with initial data if no data exists yet.
  * Call this once on app startup (e.g. in a layout or provider).
  */
+const SEED_VERSION = '2'; // bump to force reseed
+
 export function seedIfEmpty(): void {
   if (typeof window === 'undefined') return;
 
-  const existingUsers = localStorage.getItem('lob_users');
-  if (existingUsers && JSON.parse(existingUsers).length > 0) return;
+  const currentVersion = localStorage.getItem('lob_seed_version');
+  if (currentVersion === SEED_VERSION) return;
+
+  // Clear old data
+  ['lob_users', 'lob_events', 'lob_entries', 'lob_follows'].forEach(k => localStorage.removeItem(k));
+  localStorage.setItem('lob_seed_version', SEED_VERSION);
 
   // Seed all data
   users.forEach((user) => db.createUser(user));

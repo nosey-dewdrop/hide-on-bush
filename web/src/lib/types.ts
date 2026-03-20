@@ -42,12 +42,13 @@ export interface Event {
   date: string;
   time: string;
   location: string;
-  tags: EventTag[];
+  tags: string[];
   posterColor: PosterColor;
   pinType: PinType;
   pinColor: PinColor;
   authorId: string;
   goingUserIds: string[];
+  displayDate?: string; // optional override for recurring events like "every tue & thu"
   createdAt: string;
 }
 

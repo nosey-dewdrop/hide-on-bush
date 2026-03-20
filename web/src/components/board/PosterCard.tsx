@@ -22,8 +22,8 @@ export default function PosterCard({ event, index, author }: PosterCardProps) {
   }, [index]);
 
   const rotation = getRotation(index);
-  const isNew =
-    Date.now() - new Date(event.createdAt).getTime() < 1000 * 60 * 60 * 6;
+  const createdMs = new Date(event.createdAt).getTime();
+  const isNew = Date.now() - createdMs < 1000 * 60 * 60 * 24;
 
   const pinColorVar =
     event.pinColor === 'red'
@@ -93,7 +93,7 @@ export default function PosterCard({ event, index, author }: PosterCardProps) {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontWeight: 300 }}>
               <span style={{ fontSize: '10px', opacity: 0.6 }}>&#x1F4C5;</span>{' '}
-              {formatDate(event.date)} &middot; {event.time}
+              {event.displayDate || formatDate(event.date)} &middot; {event.time}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '5px', fontWeight: 300 }}>
               <span style={{ fontSize: '10px', opacity: 0.6 }}>&#x1F4CD;</span> {event.location}

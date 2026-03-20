@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Event, EventTag, User } from '@/lib/types';
 import { db } from '@/lib/db';
 import { seedIfEmpty } from '@/lib/seed';
@@ -10,6 +11,7 @@ import CorkSurface from '@/components/board/CorkSurface';
 import BoardGrid from '@/components/board/BoardGrid';
 
 export default function Home() {
+  const router = useRouter();
   const [events, setEvents] = useState<Event[]>([]);
   const [users, setUsers] = useState<User[]>([]);
   const [activeTag, setActiveTag] = useState<EventTag | 'all'>('all');
@@ -24,7 +26,7 @@ export default function Home() {
   }, []);
 
   const filtered = events.filter((e) => {
-    const matchesTag = activeTag === 'all' || e.tags.includes(activeTag as EventTag);
+    const matchesTag = activeTag === 'all' || e.tags.includes(activeTag);
     const q = searchQuery.toLowerCase().trim();
     const matchesSearch =
       !q ||
@@ -39,6 +41,9 @@ export default function Home() {
     <>
       <Header
         onSearch={(q) => setSearchQuery(q)}
+        onCalendarToggle={() => router.push('/calendar')}
+        onCreatePin={() => router.push('/create')}
+        onAvatarClick={() => router.push('/profile/damla')}
       />
       <TagBar
         activeTag={activeTag as EventTag}

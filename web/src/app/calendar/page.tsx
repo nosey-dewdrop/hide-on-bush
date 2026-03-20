@@ -22,7 +22,7 @@ const TAG_COLORS: Record<string, { bg: string; text: string }> = {
   tech: { bg: '#e8f5e9', text: '#2e7d32' },
 };
 
-function getTagStyle(tags: EventTag[]) {
+function getTagStyle(tags: string[]) {
   const first = tags[0];
   if (first && TAG_COLORS[first]) return TAG_COLORS[first];
   return { bg: '#e3f2fd', text: '#1565c0' };
