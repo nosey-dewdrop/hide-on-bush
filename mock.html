@@ -219,9 +219,11 @@
 
     .poster-card {
       background: #fff;
-      border-radius: 3px;
+      border-radius: 4px;
       overflow: hidden;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+      box-shadow: 0 3px 10px rgba(0,0,0,0.18), 0 1px 3px rgba(0,0,0,0.1);
+      border: 1px solid rgba(0,0,0,0.06);
+      border-left: 3px solid var(--card-accent, var(--sky));
     }
 
     .pin {
@@ -287,13 +289,21 @@
     .poster-author .avatar { width: 14px; height: 14px; font-size: 7px; }
 
     .poster-color-mint .poster-header { background: #e8f5e9; }
+    .poster-color-mint .poster-card { --card-accent: #66bb6a; }
     .poster-color-lavender .poster-header { background: #ede7f6; }
+    .poster-color-lavender .poster-card { --card-accent: #ab47bc; }
     .poster-color-peach .poster-header { background: #fce4ec; }
+    .poster-color-peach .poster-card { --card-accent: #ef5350; }
     .poster-color-sky .poster-header { background: #e3f2fd; }
+    .poster-color-sky .poster-card { --card-accent: #42a5f5; }
     .poster-color-butter .poster-header { background: #fff8e1; }
+    .poster-color-butter .poster-card { --card-accent: #ffa726; }
     .poster-color-coral .poster-header { background: #fbe9e7; }
+    .poster-color-coral .poster-card { --card-accent: #ff7043; }
     .poster-color-sage .poster-header { background: #e8f5e9; }
+    .poster-color-sage .poster-card { --card-accent: #26a69a; }
     .poster-color-rose .poster-header { background: #fce4ec; }
+    .poster-color-rose .poster-card { --card-accent: #ec407a; }
 
     .just-pinned-badge {
       position: absolute; top: -5px; right: -5px;
