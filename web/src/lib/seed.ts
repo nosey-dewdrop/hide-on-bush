@@ -359,16 +359,25 @@ const follows: Follow[] = [
  * Seeds localStorage with initial data if no data exists yet.
  * Call this once on app startup (e.g. in a layout or provider).
  */
-const SEED_VERSION = '2'; // bump to force reseed
+const SEED_VERSION = '3'; // bump to force reseed
 
 export function seedIfEmpty(): void {
   if (typeof window === 'undefined') return;
 
   const currentVersion = localStorage.getItem('lob_seed_version');
-  if (currentVersion === SEED_VERSION) return;
+  if (currentVersion === SEED_VERSION) {
+    // Already seeded with this version, check if data exists
+    const existing = localStorage.getItem('lob_events');
+    if (existing) {
+      try {
+        const parsed = JSON.parse(existing);
+        if (Array.isArray(parsed) && parsed.length > 0) return;
+      } catch { /* reseed */ }
+    }
+  }
 
-  // Clear old data
-  ['lob_users', 'lob_events', 'lob_entries', 'lob_follows'].forEach(k => localStorage.removeItem(k));
+  // Clear ALL lob data and reseed
+  Object.keys(localStorage).filter(k => k.startsWith('lob_')).forEach(k => localStorage.removeItem(k));
   localStorage.setItem('lob_seed_version', SEED_VERSION);
 
   // Seed all data

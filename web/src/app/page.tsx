@@ -19,12 +19,20 @@ export default function Home() {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    seedIfEmpty();
-    const loadedEvents = db.getEvents();
-    const loadedUsers = db.getUsers();
-    console.log('[LOB] events:', loadedEvents.length, 'users:', loadedUsers.length);
-    setEvents(loadedEvents);
-    setUsers(loadedUsers);
+    try {
+      seedIfEmpty();
+      console.log('[LOB] seed done, lob_events in storage:', !!localStorage.getItem('lob_events'));
+      const loadedEvents = db.getEvents();
+      const loadedUsers = db.getUsers();
+      console.log('[LOB] loaded events:', loadedEvents.length, 'users:', loadedUsers.length);
+      if (loadedEvents.length > 0) {
+        console.log('[LOB] first event:', loadedEvents[0].title);
+      }
+      setEvents(loadedEvents);
+      setUsers(loadedUsers);
+    } catch (err) {
+      console.error('[LOB] error:', err);
+    }
     setReady(true);
   }, []);
 
