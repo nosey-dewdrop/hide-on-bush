@@ -18,20 +18,28 @@
       --shadow-soft: 0 2px 8px rgba(0,0,0,0.15);
       --shadow-lifted: 0 8px 24px rgba(0,0,0,0.25);
       --font: 'IBM Plex Mono', monospace;
-      --bg: #1a1a1a;
-      --surface: #242424;
-      --text: #e8e8e8;
-      --text-dim: #999;
-      --accent: #3ba55d;
-      --bar-bg: #111;
+      --baby: #aedcf0;
+      --baby-light: #ddf0fa;
+      --baby-bg: #f0f8ff;
+      --sky: #87ceeb;
+      --bg: var(--baby-bg);
+      --surface: #f7fbfe;
+      --text: #1a3a4a;
+      --text-dim: #4a7a8a;
+      --accent: var(--sky);
+      --bar-bg: rgba(240,248,255,0.92);
+      --border: #c4dfe8;
+      --glow: rgba(135,206,235,0.12);
     }
 
-    html.light {
-      --bg: #f0ece4;
-      --surface: #fff;
-      --text: #1a1a1a;
-      --text-dim: #666;
-      --bar-bg: #fff;
+    html.dark {
+      --bg: #0d2b3e;
+      --surface: #142f42;
+      --text: #aedcf0;
+      --text-dim: #6a9aaa;
+      --accent: #87ceeb;
+      --bar-bg: rgba(13,43,62,0.92);
+      --border: #1a4a5a;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -50,7 +58,7 @@
       top: 0;
       z-index: 100;
       background: var(--bar-bg);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid var(--border);
       padding: 16px 24px;
       display: flex;
       align-items: center;
@@ -58,8 +66,8 @@
       backdrop-filter: blur(12px);
     }
 
-    html.light .topbar {
-      border-bottom: 1px solid rgba(0,0,0,0.08);
+    html.dark .topbar {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .topbar-left {
@@ -87,7 +95,7 @@
 
     .theme-toggle {
       background: none;
-      border: 1px solid rgba(255,255,255,0.1);
+      border: 1px solid var(--border);
       color: var(--text);
       font-family: var(--font);
       font-size: 13px;
@@ -95,10 +103,6 @@
       border-radius: 6px;
       cursor: pointer;
       transition: all 0.2s;
-    }
-
-    html.light .theme-toggle {
-      border-color: rgba(0,0,0,0.12);
     }
 
     .theme-toggle:hover {
@@ -119,16 +123,12 @@
       font-size: 12px;
       padding: 6px 14px;
       border-radius: 100px;
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
       background: transparent;
       color: var(--text-dim);
       cursor: pointer;
       transition: all 0.2s;
       white-space: nowrap;
-    }
-
-    html.light .pill {
-      border-color: rgba(0,0,0,0.1);
     }
 
     .pill:hover {
@@ -137,8 +137,8 @@
     }
 
     .pill.active {
-      background: var(--accent);
-      border-color: var(--accent);
+      background: var(--sky);
+      border-color: var(--sky);
       color: #fff;
     }
 
@@ -350,7 +350,7 @@
 
     .going-count {
       font-weight: 600;
-      color: var(--accent);
+      color: #1a3a4a;
       font-size: 12px;
     }
 
@@ -360,15 +360,15 @@
       font-weight: 600;
       padding: 4px 10px;
       border-radius: 4px;
-      border: 1px solid var(--accent);
+      border: 1px solid var(--sky);
       background: transparent;
-      color: var(--accent);
+      color: #1a3a4a;
       cursor: pointer;
       transition: all 0.2s;
     }
 
     .going-btn:hover {
-      background: var(--accent);
+      background: var(--sky);
       color: #fff;
     }
 
@@ -419,7 +419,7 @@
       position: absolute;
       top: -6px;
       right: -6px;
-      background: var(--accent);
+      background: var(--sky);
       color: #fff;
       font-family: var(--font);
       font-size: 9px;
@@ -750,7 +750,7 @@
 
   <script>
     function toggleTheme() {
-      document.documentElement.classList.toggle('light');
+      document.documentElement.classList.toggle('dark');
     }
 
     function filterCards(category, btn) {
